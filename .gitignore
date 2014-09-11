@@ -1,0 +1,30 @@
+# Build files
+out
+target
+gen
+gen-external-apklibs
+build
+
+# Gradle files
+.gradle
+
+# IntelliJ files
+.idea
+*.iml
+
+# Eclipse files
+.settings
+.classpath
+.project
+
+# Vim files
+*.swp
+
+# Mac files
+.DS_Store
+
+# Windows files
+Thumbs.db
+
+# Android files
+local.properties

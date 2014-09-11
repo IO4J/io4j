@@ -1,0 +1,9 @@
+rootProject.name = 'io4j'
+
+include 'io4j-api'
+include 'io4j-spi'
+include 'io4j-core'
+include 'io4j-nop'
+include 'io4j-raspi'
+include 'io4j-example'
+
