@@ -23,7 +23,7 @@ public class RaspiPlatform extends AbstractPlatform implements Platform {
     }
 
     @Override
-    public boolean isSupported(Context context) {
+    public boolean isCompatible(Context context) {
         // TODO : implement code to only return 'true' value if running on a Raspberry Pi board
         return true;
     }

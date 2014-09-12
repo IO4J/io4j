@@ -2,11 +2,11 @@ package com.io4j.io.analog;
 
 import com.io4j.io.AbstractPin;
 
-public abstract class AbstractAnalogInputPin
-        extends AbstractPin<AnalogInputPin>
-        implements AnalogInputPin<AnalogInputPin> {
+public abstract class AbstractAnalogInput
+        extends AbstractPin<AnalogInput>
+        implements AnalogInput<AnalogInput> {
 
-    public AbstractAnalogInputPin(int number, String name) {
+    public AbstractAnalogInput(int number, String name) {
         super(number, name);
     }
 

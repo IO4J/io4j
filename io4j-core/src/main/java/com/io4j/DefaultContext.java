@@ -8,7 +8,7 @@ import java.util.*;
 public class DefaultContext implements Context {
 
     protected Platform platform = null;
-    protected Map<String, Expander> expanders = new HashMap<>();
+    protected Map<String, Extender> expanders = new HashMap<>();
 
     @Override
     public String toString(){
@@ -88,7 +88,7 @@ public class DefaultContext implements Context {
                 }
 
                 // ensure platform is supported on this runtime
-                if(platform.isSupported(this)) {
+                if(platform.isCompatible(this)) {
                     if(result == null){
                         result = platform;
                     }
@@ -141,13 +141,13 @@ public class DefaultContext implements Context {
     }
 
     @Override
-    public Collection<Expander> expanders(){
+    public Collection<Extender> expanders(){
         return expanders.values();
     }
 
     @Override
-    public Collection<Expander> expanders(String ... name){
-        ArrayList<Expander> results = new ArrayList<>();
+    public Collection<Extender> expanders(String ... name){
+        ArrayList<Extender> results = new ArrayList<>();
         for(String key: name){
             if(expanders.containsKey(key)){
                 results.add(expanders.get(key));
@@ -157,12 +157,12 @@ public class DefaultContext implements Context {
     }
 
     @Override
-    public Expander expander(String name) {
+    public Extender expander(String name) {
         return expanders.get(name);
     }
 
     @Override
-    public <P extends Expander> P expander(String name, Class<P> type) {
+    public <P extends Extender> P expander(String name, Class<P> type) {
         if (expanders.containsKey(name)) {
             return type.cast(expanders.get(name));
         }
@@ -186,7 +186,7 @@ public class DefaultContext implements Context {
         // if not found in platform providers, then
         // attempt to resolve providers from expanders
         if(expanders != null && !expanders.isEmpty()){
-            for(Expander expander : expanders.values()){
+            for(Extender expander : expanders.values()){
                 if(expander.hasProviders()){
                     return true;
                 }
@@ -210,7 +210,7 @@ public class DefaultContext implements Context {
         // if not found in platform providers, then
         // attempt to resolve named provider from expanders
         if(expanders != null && !expanders.isEmpty()){
-            for(Expander expander : expanders.values()){
+            for(Extender expander : expanders.values()){
                 if(expander.hasProvider(name)){
                     return true;
                 }
@@ -235,7 +235,7 @@ public class DefaultContext implements Context {
         // if not found in platform providers, then
         // attempt to resolve provider by class/interface from expanders
         if(expanders != null && !expanders.isEmpty()){
-            for(Expander expander : expanders.values()){
+            for(Extender expander : expanders.values()){
                 if(expander.hasProvider(type)){
                     return true;
                 }
@@ -280,7 +280,7 @@ public class DefaultContext implements Context {
         // if not found in platform providers, then
         // attempt to resolve named provider from expanders
         if(expanders != null && !expanders.isEmpty()){
-            for(Expander expander : expanders.values()){
+            for(Extender expander : expanders.values()){
                 if(expander.hasProvider(name)){
                     return (PROVIDER_TYPE)expander.provider(name);
                 }
@@ -305,7 +305,7 @@ public class DefaultContext implements Context {
         // if not found in platform providers, then
         // attempt to resolve named provider from expanders
         if(expanders != null && !expanders.isEmpty()){
-            for(Expander expander : expanders.values()){
+            for(Extender expander : expanders.values()){
                 if(expander.hasProvider(name)){
                     return expander.provider(name, type);
                 }
@@ -332,7 +332,7 @@ public class DefaultContext implements Context {
         // if not found in platform providers, then
         // attempt to resolve named provider from expanders
         if(expanders != null && !expanders.isEmpty()){
-            for(Expander expander : expanders.values()){
+            for(Extender expander : expanders.values()){
                 result = expander.provider(type);
                 if(result != null) return result;
             }
@@ -354,7 +354,7 @@ public class DefaultContext implements Context {
 
         // next, attempt to include expander providers
         if(expanders != null && !expanders.isEmpty()){
-            for(Expander expander : expanders.values()){
+            for(Extender expander : expanders.values()){
                 results.addAll(expander.providers());
             }
         }
@@ -375,7 +375,7 @@ public class DefaultContext implements Context {
 
         // next, attempt to include expander providers
         if(expanders != null && !expanders.isEmpty()){
-            for(Expander expander : expanders.values()){
+            for(Extender expander : expanders.values()){
                 results.addAll(expander.providers(name));
             }
         }
@@ -396,7 +396,7 @@ public class DefaultContext implements Context {
 
         // next, attempt to include expander providers
         if(expanders != null && !expanders.isEmpty()){
-            for(Expander expander : expanders.values()){
+            for(Extender expander : expanders.values()){
                 results.addAll(expander.providers(type));
             }
         }

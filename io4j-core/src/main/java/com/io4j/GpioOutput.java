@@ -4,33 +4,33 @@ package com.io4j;
 import com.io4j.exception.PlatformResolutionException;
 import com.io4j.io.Pin;
 import com.io4j.io.Signal;
-import com.io4j.io.gpio.DigitalIOPin;
+import com.io4j.io.gpio.DigitalOutput;
 import com.io4j.io.gpio.GpioProvider;
 
-public class GPIOPin implements DigitalIOPin {
+public class GpioOutput implements DigitalOutput {
 
     protected final GpioProvider provider;
-    protected final DigitalIOPin pin;
+    protected final DigitalOutput pin;
 
 
-    public GPIOPin(int pinNumber) throws PlatformResolutionException {
+    public GpioOutput(int pinNumber) throws PlatformResolutionException {
         Context context = IO4J.instance();
         this.provider = context.provider(GpioProvider.class);
         this.pin = this.provider.pin(pinNumber);
     }
 
-    public GPIOPin(String pinName) throws PlatformResolutionException {
+    public GpioOutput(String pinName) throws PlatformResolutionException {
         Context context = IO4J.instance();
         this.provider = context.provider(GpioProvider.class);
         this.pin = this.provider.pin(pinName);
     }
 
-    public GPIOPin(GpioProvider provider, int pinNumber){
+    public GpioOutput(GpioProvider provider, int pinNumber){
         this.provider = provider;
         this.pin = this.provider.pin(pinNumber);
     }
 
-    public GPIOPin(GpioProvider provider, String pinName){
+    public GpioOutput(GpioProvider provider, String pinName){
         this.provider = provider;
         this.pin = this.provider.pin(pinName);
     }
@@ -51,25 +51,25 @@ public class GPIOPin implements DigitalIOPin {
     }
 
     @Override
-    public DigitalIOPin high() {
+    public DigitalOutput high() {
         pin.high();
         return this;
     }
 
     @Override
-    public DigitalIOPin low() {
+    public DigitalOutput low() {
         pin.low();
         return this;
     }
 
     @Override
-    public DigitalIOPin value(boolean high) {
+    public DigitalOutput value(boolean high) {
         pin.value(high);
         return this;
     }
 
     @Override
-    public DigitalIOPin value(Signal value) {
+    public DigitalOutput value(Signal value) {
         pin.value(value);
         return this;
     }

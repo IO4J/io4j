@@ -3,6 +3,7 @@ package com.io4j.io;
 import com.io4j.util.IO4JUtil;
 
 public enum Signal {
+    Unknown(-1, null),
     High(1, true),
     Low(0, false);
 
@@ -10,9 +11,9 @@ public enum Signal {
     public static final String LOW = "low";
 
     private int numericValue;
-    private boolean booleanValue;
+    private Boolean booleanValue;
 
-    Signal(int numericValue, boolean booleanValue) {
+    Signal(int numericValue, Boolean booleanValue) {
         this.numericValue = numericValue;
         this.booleanValue = booleanValue;
     }

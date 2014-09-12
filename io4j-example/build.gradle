@@ -12,7 +12,7 @@ dependencies {
     compile project(':io4j-api')
     compile project(':io4j-spi')
     compile project(':io4j-core')
-    compile project(':io4j-raspi')
+    //compile project(':io4j-raspi')
     compile project(':io4j-nop')
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }

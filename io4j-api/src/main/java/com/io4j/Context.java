@@ -29,8 +29,8 @@ public interface Context extends ProviderContainer {
     boolean hasExpander(String name);
     boolean hasExpanders(String... name);
 
-    Expander expander(String name);
-    <P extends Expander> P expander(String name, Class<P> type);
-    Collection<Expander> expanders();
-    Collection<Expander> expanders(String... name);
+    Extender expander(String name);
+    <P extends Extender> P expander(String name, Class<P> type);
+    Collection<Extender> expanders();
+    Collection<Extender> expanders(String... name);
 }

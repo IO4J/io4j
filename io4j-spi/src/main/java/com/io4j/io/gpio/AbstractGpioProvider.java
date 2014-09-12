@@ -14,7 +14,7 @@ public abstract class AbstractGpioProvider extends AbstractProvider<GpioProvider
         super(name);
     }
 
-    public <PIN_TYPE extends DigitalIOPin> void addPin(PIN_TYPE pin){
+    public <PIN_TYPE extends Digital> void addPin(PIN_TYPE pin){
 
         // add pin to pin by number lookup map
         if(!pins_by_number.containsKey(pin.number()))
@@ -83,22 +83,22 @@ public abstract class AbstractGpioProvider extends AbstractProvider<GpioProvider
     }
 
     @Override
-    public <PIN_TYPE extends DigitalPin> PIN_TYPE pin(int number) {
+    public <PIN_TYPE extends Digital> PIN_TYPE pin(int number) {
         return (PIN_TYPE) pins_by_number.get(number);
     }
 
     @Override
-    public <PIN_TYPE extends DigitalPin> PIN_TYPE pin(int number, Class<PIN_TYPE> type) {
+    public <PIN_TYPE extends Digital> PIN_TYPE pin(int number, Class<PIN_TYPE> type) {
         return type.cast(pin(number));
     }
 
     @Override
-    public <PIN_TYPE extends DigitalPin> PIN_TYPE pin(String name) {
+    public <PIN_TYPE extends Digital> PIN_TYPE pin(String name) {
         return (PIN_TYPE) pins_by_name.get(name);
     }
 
     @Override
-    public <PIN_TYPE extends DigitalPin> PIN_TYPE pin(String name, Class<PIN_TYPE> type) {
+    public <PIN_TYPE extends Digital> PIN_TYPE pin(String name, Class<PIN_TYPE> type) {
         return type.cast(pin(name));
     }
 

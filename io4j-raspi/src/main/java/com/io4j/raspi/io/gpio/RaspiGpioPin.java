@@ -1,19 +1,12 @@
 package com.io4j.raspi.io.gpio;
 
 import com.io4j.io.Signal;
-import com.io4j.io.gpio.AbstractDigitalIOPin;
+import com.io4j.io.gpio.AbstractDigitalOutput;
 
-public class RaspiGpioPin extends AbstractDigitalIOPin {
-
-    protected Signal value;
+public class RaspiGpioPin extends AbstractDigitalOutput {
 
     public RaspiGpioPin(int number, String name) {
         super(number, name);
-    }
-
-    @Override
-    public Signal value() {
-        return value;
     }
 
     @Override
@@ -21,6 +14,5 @@ public class RaspiGpioPin extends AbstractDigitalIOPin {
         this.value = value;
         return this;
     }
-
 }
 

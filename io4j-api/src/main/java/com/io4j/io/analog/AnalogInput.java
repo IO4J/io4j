@@ -1,6 +1,6 @@
 package com.io4j.io.analog;
 
-public interface AnalogInputPin<PIN_TYPE> extends AnalogPin<PIN_TYPE> {
+public interface AnalogInput<PIN_TYPE> extends Analog<PIN_TYPE> {
     public Number value();
     public double doubleValue();
     public long longValue();

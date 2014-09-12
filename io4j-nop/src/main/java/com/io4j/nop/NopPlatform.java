@@ -3,6 +3,7 @@ package com.io4j.nop;
 import com.io4j.Context;
 import com.io4j.Platform;
 import com.io4j.AbstractPlatform;
+import com.io4j.nop.io.gpio.NopGpioProvider;
 
 public class NopPlatform extends AbstractPlatform implements Platform {
 
@@ -10,10 +11,11 @@ public class NopPlatform extends AbstractPlatform implements Platform {
 
     public NopPlatform() {
         super(NAME);
+        addProvider(new NopGpioProvider(this));
     }
 
     @Override
-    public boolean isSupported(Context context) {
+    public boolean isCompatible(Context context) {
         return true;
     }
 
